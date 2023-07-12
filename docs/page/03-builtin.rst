@@ -954,6 +954,22 @@ Format string depends on the type of formatter selected, see help about `Format 
 
 Formatters use current culture, unless a culture name is specified in the ``culture`` argument. See documentation of `CultureInfo.GetCultureInfo <https://docs.microsoft.com/fr-fr/dotnet/api/system.globalization.cultureinfo.getcultureinfo?view=netframework-4.8>`__ method to read more about culture names.
 
+When format DateTime, DateTime should be passed in seconds format and starts from `1970-01-01 00:00:00,000` (yyyy-MM-dd hh:mm:ss,fff)
+.. code-block:: plain
+    :caption: Cottle template
+
+    {format(time, "d:yyyy-MM-dd HH:mm:ss")}
+
+.. code-block:: plain
+    :caption: C# code
+
+    new DateTime(2012,6,17,12,34,56).Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+
+.. code-block:: plain
+    :caption: Rendering output
+
+    2012-06-17 12:34:56
+
 
 lcase(string)
 -------------
